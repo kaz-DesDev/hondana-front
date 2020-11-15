@@ -9,7 +9,9 @@
     "test": "jest",
     "watch": "jest --watchAll",
     "lint": "eslint .",
-    "fix": "eslint --fix ."
+    "fix": "eslint --fix .",
+    "storybook": "start-storybook -p 6006 --no-dll",
+    "build-storybook": "build-storybook --no-dll"
   },
   "dependencies": {
     "next": "10.0.1",
@@ -17,10 +19,16 @@
     "react-dom": "17.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@storybook/addon-actions": "^6.0.28",
+    "@storybook/addon-essentials": "^6.0.28",
+    "@storybook/addon-links": "^6.0.28",
+    "@storybook/react": "^6.0.28",
     "@types/jest": "^26.0.15",
     "@types/node": "^14.14.7",
     "@types/react": "^16.9.56",
     "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "babel-loader": "^8.2.1",
     "eslint": "^7.13.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
@@ -28,6 +36,7 @@
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.1.2",
+    "react-is": "^17.0.1",
     "ts-jest": "^26.4.4",
     "typescript": "^4.0.5"
   }
