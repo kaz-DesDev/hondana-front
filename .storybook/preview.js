@@ -1,4 +1,9 @@
+const addParameters = require("@storybook/react").addParameters;
 
-export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
-}
+addParameters({
+  options: {
+    storySort: {
+      order: ["Welcome", "README"],
+    },
+  },
+});
