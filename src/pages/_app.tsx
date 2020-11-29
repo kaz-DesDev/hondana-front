@@ -1,10 +1,13 @@
 import "../styles/globals.css";
 import React from "react";
+import { render } from "react-dom";
 import Head from "next/head";
 import { AppProps } from "next/app";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import theme from "../src/theme";
+import theme from "../theme";
+
+import { ApolloProvider } from "@apollo/client";
 
 export default function MyApp(props: AppProps) {
   const { Component, pageProps } = props;
