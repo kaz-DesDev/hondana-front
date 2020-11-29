@@ -32,6 +32,7 @@ export type Book = {
   __typename?: "Book";
   isbn: Scalars["ID"];
   title?: Maybe<Scalars["String"]>;
+  cover?: Maybe<Scalars["String"]>;
 };
 
 export enum CacheControlScope {
@@ -44,7 +45,9 @@ export type BookQueryVariables = Exact<{
 }>;
 
 export type BookQuery = { __typename?: "Query" } & {
-  book?: Maybe<{ __typename?: "Book" } & Pick<Book, "isbn" | "title">>;
+  book?: Maybe<
+    { __typename?: "Book" } & Pick<Book, "isbn" | "title" | "cover">
+  >;
 };
 
 export const BookDocument = gql`
@@ -52,6 +55,7 @@ export const BookDocument = gql`
     book(isbn: $isbn) {
       isbn
       title
+      cover
     }
   }
 `;

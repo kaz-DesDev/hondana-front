@@ -22,7 +22,14 @@ const Book: React.FC<BookProps> = ({ isbn }) => {
   return (
     <Fragment>
       <h1>Book</h1>
-      {data && data.book && <div>{data.book.title}</div>}
+      {data && data.book && (
+        <div>
+          {data.book.title}
+          <figure>
+            <img src={data.book.cover} alt="book cover" />
+          </figure>
+        </div>
+      )}
     </Fragment>
   );
 };

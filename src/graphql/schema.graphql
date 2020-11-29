@@ -5,4 +5,5 @@ type Query {
 type Book {
   isbn: ID!
   title: String
+  cover: String
 }
