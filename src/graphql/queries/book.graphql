@@ -2,6 +2,11 @@ query book($isbn: ID!) {
   book(isbn: $isbn) {
     isbn
     title
+    volume
+    series
+    publisher
+    pubdate
     cover
+    author
   }
 }
