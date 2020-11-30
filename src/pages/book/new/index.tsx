@@ -1,12 +1,8 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
-import { useBookQuery } from "../../../@types/codegen/graphql";
 import withApollo from "../../../lib/apollo";
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
-import FilledInput from "@material-ui/core/FilledInput";
 import FormControl from "@material-ui/core/FormControl";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 
@@ -18,6 +14,9 @@ const useStyles = makeStyles((theme: Theme) =>
       "& > *": {
         margin: theme.spacing(1),
       },
+      flexGrow: 1,
+      margin: "auto",
+      textAlign: "center",
     },
   })
 );
@@ -30,20 +29,9 @@ const GetBookInformation: React.FC = () => {
     setIsbn(event.target.value);
   };
 
-  const { data, loading, error } = useBookQuery({
-    variables: {
-      isbn: "9784488028022",
-    },
-  });
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>ERROR: {error.message}</p>;
-  if (!data) return <p>Not found</p>;
-
   return (
     <Fragment>
-      <h1>Book</h1>
-      {data && data.book && <div>{data.book.title}</div>}
+      <h1>ISBNを入力して書籍情報を取得</h1>
 
       <form className={classes.root} noValidate autoComplete="off">
         <FormControl variant="outlined">

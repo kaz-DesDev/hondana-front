@@ -48,7 +48,6 @@ const Book: React.FC<BookProps> = ({ isbn }) => {
 
   return (
     <Fragment>
-      <h1>Book</h1>
       <Paper className={classes.paper}>
         <Grid container spacing={2}>
           <Grid item>
