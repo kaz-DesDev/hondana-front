@@ -1,3 +1,5 @@
+# hondana-front
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -13,6 +15,25 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+
+## Available Scripts
+
+### `npm run dev`
+
+To start your server in locally. <br />
+Open [http://localhost:4000](http://localhost:4000) to view GraphQL Playground in the browser.
+
+### `npm test`
+
+Launches the test runner.
+
+### `npm run lint` or 'nom run fix'
+
+### `npm run storybook`
+
+### `npm run codegen`
+
+Run the code-generator using graphql-codegen
 
 ## Learn More
 
