@@ -29,7 +29,11 @@ Launches the test runner.
 
 ### `npm run lint` or 'nom run fix'
 
+Run linter.
+
 ### `npm run storybook`
+
+Start Storybook locally and output the address.
 
 ### `npm run codegen`
 
