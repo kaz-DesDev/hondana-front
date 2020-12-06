@@ -4,7 +4,11 @@ module.exports = {
   moduleFileExtensions: ["js", "ts", "jsx, tsx", "json"],
   testPathIgnorePatterns: ["<rootDir>[/\\\\](node_modules|.next)[/\\\\]"],
   transformIgnorePatterns: ["[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$"],
+  // DMX と SVG の変換処理を追加
   transform: {
+    "^.+\\.svg$": "jest-svg-transformer",
+    "^.+\\.jsx?$": "ts-jest",
+    "^.+\\.mdx$": "@storybook/addon-docs/jest-transform-mdx",
     "^.+\\.(ts|tsx)$": "babel-jest",
   },
   watchPlugins: [

@@ -19,6 +19,7 @@
     "@typescript-eslint/indent": 0,
     "react/jsx-filename-extension": [1, {
       "extensions": [".ts", ".tsx", ".js", ".jsx"]
-    }]
+    }],
+    "react/prop-types": 0
   }
 }
