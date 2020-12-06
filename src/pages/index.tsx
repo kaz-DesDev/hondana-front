@@ -1,9 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { NextPage } from "next";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import styles from "styles/Home.module.css";
 
-export default function Home() {
+console.log("test: " + styles.container);
+
+const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -64,4 +67,6 @@ export default function Home() {
       </footer>
     </div>
   );
-}
+};
+
+export default Home;
