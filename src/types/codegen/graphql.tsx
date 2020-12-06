@@ -21,6 +21,7 @@ export type Scalars = {
 
 export type Query = {
   __typename?: "Query";
+  books: Array<Maybe<Book>>;
   book?: Maybe<Book>;
 };
 
@@ -38,6 +39,22 @@ export type Book = {
   pubdate?: Maybe<Scalars["String"]>;
   cover?: Maybe<Scalars["String"]>;
   author?: Maybe<Scalars["String"]>;
+};
+
+export type Mutation = {
+  __typename?: "Mutation";
+  addBook: BookUpdateResponse;
+};
+
+export type MutationAddBookArgs = {
+  isbn: Scalars["ID"];
+};
+
+export type BookUpdateResponse = {
+  __typename?: "BookUpdateResponse";
+  success: Scalars["Boolean"];
+  message?: Maybe<Scalars["String"]>;
+  book?: Maybe<Book>;
 };
 
 export enum CacheControlScope {
