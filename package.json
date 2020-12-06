@@ -11,7 +11,7 @@
     "lint": "eslint .",
     "fix": "eslint --fix .",
     "storybook": "start-storybook -p 6006 --no-dll",
-    "build-storybook": "build-storybook --no-dll",
+    "build-storybook": "build-storybook --no-dll -o docs-build -s ./src/stories/assets",
     "codegen": "graphql-codegen --config codegen.yml",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
