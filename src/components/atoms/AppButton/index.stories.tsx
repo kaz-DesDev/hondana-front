@@ -8,7 +8,7 @@ export interface Props {
 }
 
 export default {
-  title: "Components/Button",
+  title: "Components/Atoms/Button",
   component: Button,
 } as Meta;
 
