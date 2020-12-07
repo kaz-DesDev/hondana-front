@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 
-export interface BookTileItemProps {
+export interface BookListItemProps {
   book: Book;
 }
 
@@ -17,12 +17,12 @@ const useStyles = makeStyles((theme: Theme) =>
     paper: {
       padding: theme.spacing(2),
       margin: "auto",
-      maxWidth: 168,
+      maxWidth: 800,
     },
     img: {
       margin: "auto",
       display: "block",
-      maxWidth: "100%",
+      maxWidth: 80,
       maxHeight: "100%",
     },
     title: {
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const BookTileItem: React.FC<BookTileItemProps> = ({ book }) => {
+const BookListItem: React.FC<BookListItemProps> = ({ book }) => {
   const classes = useStyles();
 
   return (
@@ -44,16 +44,16 @@ const BookTileItem: React.FC<BookTileItemProps> = ({ book }) => {
           <Grid item>
             <img className={classes.img} alt="complex" src={book.cover} />
           </Grid>
-        </Grid>
-        <Grid item xs={12} sm container>
-          <Grid item xs container direction="column" spacing={2}>
-            <Grid item xs>
-              <Typography gutterBottom className={classes.title}>
-                {book.title}
-              </Typography>
-              <Typography gutterBottom className={classes.author}>
-                著者: {book.author}
-              </Typography>
+          <Grid item xs={12} sm container>
+            <Grid item xs container direction="column" spacing={2}>
+              <Grid item xs>
+                <Typography gutterBottom className={classes.title}>
+                  {book.title}
+                </Typography>
+                <Typography gutterBottom className={classes.author}>
+                  著者: {book.author}
+                </Typography>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
@@ -62,4 +62,4 @@ const BookTileItem: React.FC<BookTileItemProps> = ({ book }) => {
   );
 };
 
-export default BookTileItem;
+export default BookListItem;

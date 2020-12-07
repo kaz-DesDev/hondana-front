@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 import { Book } from "types/codegen/graphql";
 
-import BookTileItem, { BookTileItemProps } from "./index";
+import BookListItem, { BookListItemProps } from "./index";
 
 const book: Book = {
   isbn: "9784788514348",
@@ -17,13 +17,13 @@ const book: Book = {
 };
 
 export default {
-  title: "Components/Organisms/BookTileItem",
-  component: BookTileItem,
+  title: "Components/Organisms/BookListItem",
+  component: BookListItem,
 } as Meta;
 
-const Template: Story<BookTileItemProps> = (args) => <BookTileItem {...args} />;
+const Template: Story<BookListItemProps> = (args) => <BookListItem {...args} />;
 
-export const DefaultBookTileItem = Template.bind({});
-DefaultBookTileItem.args = {
+export const DefaultBookListItem = Template.bind({});
+DefaultBookListItem.args = {
   book: book,
 };
