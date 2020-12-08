@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import { Book, useAddBookMutation, useBookQuery } from "types/codegen/graphql";
+import { Book, useAddBookMutation } from "../../../types/codegen/graphql";
 import Paper from "@material-ui/core/Paper";
 import { Button, Divider, TextField } from "@material-ui/core";
 
