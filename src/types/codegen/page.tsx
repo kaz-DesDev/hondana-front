@@ -6,6 +6,7 @@ import { NextRouter, useRouter } from "next/router";
 import { QueryHookOptions, useQuery } from "@apollo/react-hooks";
 import * as Apollo from "apollo-client";
 import React from "react";
+
 export async function getServerPageBook(
   options: Omit<Apollo.QueryOptions<Types.BookQueryVariables>, "query">,
   apolloClient: Apollo.ApolloClient<NormalizedCacheObject>
