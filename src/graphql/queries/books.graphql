@@ -1,0 +1,12 @@
+query GetBooks {
+  books {
+    isbn
+    title
+    volume
+    series
+    publisher
+    pubdate
+    cover
+    author
+  }
+}

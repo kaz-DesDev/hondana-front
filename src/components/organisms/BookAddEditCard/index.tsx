@@ -1,16 +1,14 @@
 import React from "react";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import { Book } from "types/codegen/graphql";
+import { Book, useAddBookMutation, useBookQuery } from "types/codegen/graphql";
 import Paper from "@material-ui/core/Paper";
 import { Button, Divider, TextField } from "@material-ui/core";
-import { ApolloError } from "@apollo/client";
 
 export interface BookAddEditCardProps {
   book?: Book;
   isbn: string;
-  loading?: boolean;
-  error?: ApolloError;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleClick?: () => void;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -36,11 +34,16 @@ const useStyles = makeStyles((theme: Theme) =>
 const BookAddEditCard: React.FC<BookAddEditCardProps> = ({
   book,
   isbn,
-  loading,
-  error,
   handleChange,
+  handleClick,
 }) => {
   const classes = useStyles();
+
+  const [addBookMutation, { data, loading, error }] = useAddBookMutation({
+    variables: {
+      isbn: isbn,
+    },
+  });
 
   return (
     <div className={classes.root}>
@@ -82,7 +85,17 @@ const BookAddEditCard: React.FC<BookAddEditCardProps> = ({
         </form>
         <Divider />
         <Button size="small">Cancel</Button>
-        <Button size="small" color="primary">
+        <Button
+          size="small"
+          color="primary"
+          onClick={async () => {
+            await addBookMutation({
+              variables: {
+                isbn: isbn,
+              },
+            });
+          }}
+        >
           Save
         </Button>
       </Paper>
