@@ -3,7 +3,6 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { Book } from "types/codegen/graphql";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
 import BookListItem from "components/organisms/BookListItem";
 
 export interface BookListProps {
@@ -48,7 +47,18 @@ const BookList: React.FC<BookListProps> = ({ books }) => {
     <Fragment>
       <Paper className={classes.paper}>
         <Grid container spacing={2}>
-          {list}
+          {(() => {
+            if (list.length === 0) {
+              return (
+                <div>
+                  <span>Nodata</span>
+                  <p>ISBNを入力して本を追加しましょう！</p>
+                </div>
+              );
+            } else {
+              return list;
+            }
+          })()}
         </Grid>
       </Paper>
     </Fragment>

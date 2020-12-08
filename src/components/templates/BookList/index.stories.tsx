@@ -29,3 +29,8 @@ export const DefaultBookList = Template.bind({});
 DefaultBookList.args = {
   books: books,
 };
+
+export const NoDataBookList = Template.bind({});
+NoDataBookList.args = {
+  books: null,
+};
