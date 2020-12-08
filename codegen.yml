@@ -6,12 +6,12 @@ schema:
 documents:
     - 'src/**/*.graphql'
 generates:
-    src/@types/codegen/graphql.tsx:
+    src/types/codegen/graphql.tsx:
         plugins:
             - 'typescript'
             - 'typescript-operations'
             - 'typescript-react-apollo'
-    src/@types/codegen/page.tsx:
+    src/types/codegen/page.tsx:
         config:
             documentMode: external
             importDocumentNodeExternallyFrom: ./graphql

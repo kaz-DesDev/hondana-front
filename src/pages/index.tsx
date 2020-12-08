@@ -3,10 +3,43 @@ import ReactDOM from "react-dom";
 import { NextPage } from "next";
 import Head from "next/head";
 import styles from "styles/Home.module.css";
+import BookAddEditCard from "components/organisms/BookAddEditCard";
+import withApollo from "lib/apollo";
+import { Book, useBookQuery, useGetBooksQuery } from "types/codegen/graphql";
+import BookList from "components/templates/BookList";
+import { Grid } from "@material-ui/core";
 
-console.log("test: " + styles.container);
+// const book: Book = {
+//   isbn: "9784788514348",
+//   title: "誰のためのデザイン　増補・改訂版",
+//   volume: "",
+//   series: "",
+//   publisher: "新曜社",
+//   pubdate: "20150420",
+//   cover: "https://cover.openbd.jp/9784788514348.jpg",
+//   author:
+//     "Ｄ・Ａ・ノーマン／著 岡本明／訳 安村通晃／訳 伊賀聡一郎／訳 野島久雄／訳",
+// };
 
 const Home: NextPage = () => {
+  const [isbn, setIsbn] = React.useState("");
+  const [book, setBook] = React.useState<Book>(null);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsbn(event.target.value);
+
+    const { data, loading, error } = useBookQuery({
+      variables: {
+        isbn: isbn,
+      },
+    });
+    setBook(!loading && !error && data && data.book ? data.book : null);
+  };
+  const { data, loading, error } = useGetBooksQuery({
+    variables: {},
+  });
+  const books: Book[] =
+    !loading && !error && data && data.books ? data.books : null;
+
   return (
     <div className={styles.container}>
       <Head>
@@ -15,44 +48,20 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <h1 className={styles.title}>Welcome to Hondana!</h1>
 
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        <Grid container spacing={3}>
+          <Grid item xs={8}>
+            <BookList books={books} />
+          </Grid>
+          <Grid item xs={4}>
+            <BookAddEditCard
+              book={book}
+              isbn={isbn}
+              handleChange={(event) => handleChange(event)}
+            />
+          </Grid>
+        </Grid>
       </main>
 
       <footer className={styles.footer}>
@@ -69,4 +78,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default withApollo({ ssr: true })(Home);

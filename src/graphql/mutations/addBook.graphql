@@ -1,0 +1,16 @@
+mutation addBook($isbn: ID!) {
+  addBook(isbn: $isbn) {
+  	success
+    message
+    book {
+      isbn
+    	title
+    	volume
+    	series
+    	publisher
+    	pubdate
+    	cover
+    	author
+    }
+  }
+}
